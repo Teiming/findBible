@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        background-color: black;
+      }
+      main {
+        max-width: 30rem;
+        margin: auto;
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        section {
+          display: flex;
+          gap: 0.5rem;
+        }
+      }
+      input {
+        padding: 0.5rem;
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid black;
+        width: 100%;
+      }
+    </style>
+    <title>성경찾기</title>
+  </head>
+  <body>
+    <main>
+      <section>
+        <input type="text" id="book" list="booklist" />
+        <datalist id="booklist">
+          <option value="gen">창세기</option>
+          <option value="exo">출애굽기</option>
+          <option value="lev">레위기</option>
+          <option value="num">민수기</option>
+          <option value="deu">신명기</option>
+          <option value="jos">여호수아기</option>
+          <option value="jdg">사사기</option>
+          <option value="rut">룻기</option>
+          <option value="1sa">사무엘기상</option>
+          <option value="2sa">사무엘기하</option>
+          <option value="1ki">열왕기상</option>
+          <option value="2ki">열왕기하</option>
+          <option value="1ch">역대지상</option>
+          <option value="2ch">역대지하</option>
+          <option value="ezr">에스라기</option>
+          <option value="neh">느헤미야기</option>
+          <option value="est">에스더기</option>
+          <option value="job">욥기</option>
+          <option value="psa">시편</option>
+          <option value="pro">잠언</option>
+          <option value="ecc">전도서</option>
+          <option value="sng">아가</option>
+          <option value="isa">이사야서</option>
+          <option value="jer">예레미야서</option>
+          <option value="lam">예레미야 애가</option>
+          <option value="ezk">에스겔서</option>
+          <option value="dan">다니엘서</option>
+          <option value="hos">호세아서</option>
+          <option value="jol">요엘서</option>
+          <option value="amo">아모스서</option>
+          <option value="oba">오바댜서</option>
+          <option value="jnh">요나서</option>
+          <option value="mic">미가서</option>
+          <option value="nam">나훔서</option>
+          <option value="hab">하박국서</option>
+          <option value="zep">스바냐서</option>
+          <option value="hag">학개서</option>
+          <option value="zec">스가랴서</option>
+          <option value="mal">말라기서</option>
+          <option value="mat">마태복음서</option>
+          <option value="mrk">마가복음서</option>
+          <option value="luk">누가복음서</option>
+          <option value="jhn">요한복음서</option>
+          <option value="act">사도행전</option>
+          <option value="rom">로마서</option>
+          <option value="1co">고린도전서</option>
+          <option value="2co">고린도후서</option>
+          <option value="gal">갈라디아서</option>
+          <option value="eph">에베소서</option>
+          <option value="php">빌립보서</option>
+          <option value="col">골로새서</option>
+          <option value="1th">데살로니가전서</option>
+          <option value="2th">데살로니가후서</option>
+          <option value="1ti">디모데전서</option>
+          <option value="2ti">디모데후서</option>
+          <option value="tit">디도서</option>
+          <option value="phm">빌레몬서</option>
+          <option value="heb">히브리서</option>
+          <option value="jas">야고보서</option>
+          <option value="1pe">베드로전서</option>
+          <option value="2pe">베드로후서</option>
+          <option value="1jn">요한1서</option>
+          <option value="2jn">요한2서</option>
+          <option value="3jn">요한3서</option>
+          <option value="jud">유다서</option>
+          <option value="rev">요한계시록</option>
+        </datalist>
+      </section>
+      <section>
+        <input type="number" placeholder="장" id="chap" inputmode="numeric" />
+        <input type="number" placeholder="절" id="ver" inputmode="numeric" />
+      </section>
+      <section>
+        <input id="find" type="button" value="Find" />
+      </section>
+    </main>
+    <script>
+      let book = ''
+      let chap = 0
+      let ver = 0
+      document
+        .querySelector('#book')
+        .addEventListener('change', ({ target: { value } }) => {
+          book = value
+        })
+      document
+        .querySelector('#chap')
+        .addEventListener('change', ({ target: { value } }) => {
+          chap = value
+        })
+      document
+        .querySelector('#ver')
+        .addEventListener('change', ({ target: { value } }) => {
+          ver = value
+        })
+
+      document.querySelector('#find').addEventListener('click', () => {
+        location.href = `https://www.bskorea.or.kr/bible/korbibReadpage.php?version=SAENEW&book=${book}&chap=${chap}&sec=${ver}&cVersion=GAE^HAN^`
+      })
+    </script>
+  </body>
+</html>
